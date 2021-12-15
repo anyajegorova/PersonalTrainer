@@ -34,7 +34,7 @@ function Trainingslist() {
             .catch(err => console.error(err))
     }
 
-
+    // Deleting training
 
     const deleteTraining = (url) => {
         if (window.confirm('Are you sure?')) {
@@ -50,8 +50,6 @@ function Trainingslist() {
                 }).catch((err) => console.error(err))
         }
     }
-
-
 
 
     const columns = [

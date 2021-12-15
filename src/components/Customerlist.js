@@ -35,13 +35,6 @@ function Customerlist() {
             .catch(err => console.error(err))
     }
 
-    const fetchTrainings = () => {
-        fetch('https://customerrest.herokuapp.com/gettrainings')
-            .then(response => response.json())
-            .then(data => fetchTrainings(data))
-            .catch(err => console.error(err))
-    }
-
 
     // Add a new customer
     const addCustomer = customer => {
@@ -117,12 +110,12 @@ function Customerlist() {
     }
 
     const columns = [
-        {
+        { // Column for adding new training button
             headerName: "Add training",
             width: 50,
             field: '_links.href',
             cellRendererFramework: params => (
-                <AddTraining addTraining={addTraining} customer={params.data} />
+                <AddTraining addTraining={addTraining} row={params} />
             )
         },
         { field: 'firstname', sortable: true, filter: true, width: 150 },
@@ -133,7 +126,7 @@ function Customerlist() {
         { field: 'email', sortable: true, filter: true },
         { field: 'phone', sortable: true, filter: true },
         ,
-        {
+        {   //Column for edit customer button
             headerName: "",
             width: 50,
             field: 'links.0.href',
@@ -144,7 +137,7 @@ function Customerlist() {
 
 
         },
-        {
+        {   //Column for deleting customer button
             headerName: "",
             width: 50,
             field: '_links.href',

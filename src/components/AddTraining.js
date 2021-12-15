@@ -20,6 +20,7 @@ function AddTraining(props) {
     });
 
     const handleClickOpen = () => {
+        setTraining({ ...training, customer: props.row.data.links[0].href });
         setOpen(true);
     };
 
