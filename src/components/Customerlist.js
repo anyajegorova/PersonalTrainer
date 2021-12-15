@@ -27,6 +27,7 @@ function Customerlist() {
     }, []
     );
 
+    //Fetching data
     const fetchCustomers = () => {
         fetch('https://customerrest.herokuapp.com/api/customers')
             .then(response => response.json())
@@ -34,6 +35,12 @@ function Customerlist() {
             .catch(err => console.error(err))
     }
 
+    const fetchTrainings = () => {
+        fetch('https://customerrest.herokuapp.com/gettrainings')
+            .then(response => response.json())
+            .then(data => fetchTrainings(data))
+            .catch(err => console.error(err))
+    }
 
 
     // Add a new customer
@@ -87,6 +94,27 @@ function Customerlist() {
             })
             .catch(err => console.error(err))
     }
+    //Add new training
+    const addTraining = (training) => {
+        fetch('https://customerrest.herokuapp.com/api/trainings', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(training)
+        })
+            .then(response => {
+                if (response.ok) {
+                    setOpen(true)
+                    fetchCustomers()
+                    setMsg('Training added successfully')
+                } else {
+                    setMsg('Something went wrong')
+                }
+
+            })
+            .catch((err) => console.error(err))
+    }
 
     const columns = [
         {
@@ -94,7 +122,7 @@ function Customerlist() {
             width: 50,
             field: '_links.href',
             cellRendererFramework: params => (
-                <AddTraining addTraining={AddTraining} customer={params.data} />
+                <AddTraining addTraining={addTraining} customer={params.data} />
             )
         },
         { field: 'firstname', sortable: true, filter: true, width: 150 },

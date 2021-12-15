@@ -20,7 +20,6 @@ function AddTraining(props) {
     });
 
     const handleClickOpen = () => {
-        setTraining({ ...training, customer: props.customer })
         setOpen(true);
     };
 

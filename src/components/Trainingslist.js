@@ -34,9 +34,7 @@ function Trainingslist() {
             .catch(err => console.error(err))
     }
 
-    const getFullName = (url) => {
-        return url.data.customer.firstname + ' ' + url.data.customer.lastname;
-    }
+
 
     const deleteTraining = (url) => {
         if (window.confirm('Are you sure?')) {
@@ -60,7 +58,7 @@ function Trainingslist() {
         { field: 'date', sortable: true, filter: true, width: 350, valueFormatter: (params) => dayjs(params.value).format('DD/MM/YY, H:mm') },
         { field: 'duration', sortable: true, filter: true, width: 250 },
         { field: 'activity', sortable: true, filter: true, width: 350 },
-        { field: 'customer', sortable: true, filter: true, width: 350, valueGetter: getFullName },
+        { field: 'customer', sortable: true, filter: true, width: 350, valueGetter: ({ data }) => `${data.customer.firstname} ${data.customer.lastname}` },
         {
             headerName: "",
             width: 50,
