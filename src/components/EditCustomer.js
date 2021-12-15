@@ -23,13 +23,13 @@ function EditCustomer(props) {
 
     const handleClickOpen = () => {
         setCustomer({
-            firstname: props.customer.firstname,
-            lastname: props.customer.lastname,
-            streetaddress: props.customer.streetaddress,
-            postcode: props.customer.postcode,
-            city: props.customer.city,
-            email: props.customer.email,
-            phone: props.customer.phone
+            firstname: props.row.data.firstname,
+            lastname: props.row.data.lastname,
+            streetaddress: props.row.data.streetaddress,
+            postcode: props.row.data.postcode,
+            city: props.row.data.city,
+            email: props.row.data.email,
+            phone: props.row.data.phone
         });
         setOpen(true);
     };
@@ -38,7 +38,7 @@ function EditCustomer(props) {
         setOpen(false);
     };
     const handleSave = () => {
-        props.editCustomer(customer, props.customer.links[0].href);
+        props.editCustomer(customer, props.row.value);
         handleClose();
     }
 

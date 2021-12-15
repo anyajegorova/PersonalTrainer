@@ -36,8 +36,8 @@ function AddCustomer(props) {
     };
     return (
         <div>
-            <Button variant="outlined" onClick={handleClickOpen}>
-                Add Customer
+            <Button variant="contained" color="success" onClick={handleClickOpen} style={{ margin: 10 }}>
+                New Customer
             </Button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Add New Customer</DialogTitle>
@@ -111,7 +111,7 @@ function AddCustomer(props) {
                     <Button onClick={handleSave}>Save</Button>
                 </DialogActions>
             </Dialog>
-        </div>
+        </div >
     );
 
 }

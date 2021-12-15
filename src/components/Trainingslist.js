@@ -72,7 +72,7 @@ function Trainingslist() {
 
     ]
     return (<div>
-        <div className="ag-theme-material" style={{ marginTop: 10, height: 700, width: '93%', margin: 'auto', paddingTop: 10 }}>
+        <div className="ag-theme-material" style={{ marginTop: 10, height: 700, width: '93%', margin: 'auto', paddingTop: 20 }}>
             <AgGridReact rowData={trainings}
                 columnDefs={columns}
                 pagination={true}

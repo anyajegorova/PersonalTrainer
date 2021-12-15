@@ -111,9 +111,9 @@ function Customerlist() {
         {
             headerName: "",
             width: 50,
-            field: 'links[0].href',
+            field: 'links.0.href',
             cellRendererFramework: params => (
-                <EditCustomer editCustomer={editCustomer} row={params.data} />
+                <EditCustomer editCustomer={editCustomer} row={params} />
             )
 
 
