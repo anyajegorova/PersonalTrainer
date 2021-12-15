@@ -20,6 +20,7 @@ function AddTraining(props) {
     });
 
     const handleClickOpen = () => {
+        setTraining({ ...training, customer: props.customer })
         setOpen(true);
     };
 
@@ -28,7 +29,7 @@ function AddTraining(props) {
     };
 
     const handleSave = () => {
-        props.addTraining(props.row.data.customer, training);
+        props.addTraining(training);
         handleClose();
     }
 

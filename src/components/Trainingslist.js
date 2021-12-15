@@ -3,8 +3,8 @@ import { AgGridReact } from 'ag-grid-react';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
-import Snackbar from '@mui/material/Snackbar';
 import Stack from '@mui/material/Stack';
+import Snackbar from '@mui/material/Snackbar';
 
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
@@ -40,7 +40,7 @@ function Trainingslist() {
 
     const deleteTraining = (url) => {
         if (window.confirm('Are you sure?')) {
-            fetch('https://customerrest.herokuapp.com/api/trainings/' + url, { method: 'DELETE' })
+            fetch('https://customerrest.herokuapp.com/api/trainings/' + url.data.id, { method: 'DELETE' })
                 .then(response => {
                     if (response.ok) {
                         setMsg('Training deleted successfully');
@@ -57,15 +57,15 @@ function Trainingslist() {
 
 
     const columns = [
-        { field: 'date', sortable: true, filter: true, valueFormatter: (params) => dayjs(params.value).format('DD/MM/YY, H:mm') },
-        { field: 'duration', sortable: true, filter: true },
-        { field: 'activity', sortable: true, filter: true },
-        { field: 'customer', sortable: true, filter: true, valueGetter: getFullName },
+        { field: 'date', sortable: true, filter: true, width: 350, valueFormatter: (params) => dayjs(params.value).format('DD/MM/YY, H:mm') },
+        { field: 'duration', sortable: true, filter: true, width: 250 },
+        { field: 'activity', sortable: true, filter: true, width: 350 },
+        { field: 'customer', sortable: true, filter: true, width: 350, valueGetter: getFullName },
         {
             headerName: "",
             width: 50,
             field: '_links.href',
-            cellRendererFramework: params => <Stack direction="row" spacing={1}><IconButton aria-label="delete" color="error" size="small" onClick={() => deleteTraining(params.value)}><DeleteIcon /></IconButton></Stack>
+            cellRendererFramework: params => <Stack direction="row" spacing={1}><IconButton aria-label="delete" color="error" size="small" onClick={() => deleteTraining(params)}><DeleteIcon /></IconButton></Stack>
 
         }
 
@@ -82,7 +82,12 @@ function Trainingslist() {
             </ AgGridReact >
 
         </div>
-
+        <Snackbar
+            open={open}
+            message={msg}
+            autoHideDuration={3000}
+            onClose={handleClose}
+        />
     </div>
 
     )

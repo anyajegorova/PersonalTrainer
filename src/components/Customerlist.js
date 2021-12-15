@@ -127,7 +127,7 @@ function Customerlist() {
     ]
     return (<div>
         <AddCustomer addCustomer={addCustomer} />
-        <div className="ag-theme-material" style={{ marginTop: 10, height: 700, width: '93%', margin: 'auto' }}>
+        <div className="ag-theme-material" style={{ marginTop: 10, height: 620, width: '93%', margin: 'auto' }}>
             <AgGridReact
                 rowData={customers}
                 columnDefs={columns}
