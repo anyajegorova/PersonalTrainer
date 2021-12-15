@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import AddCustomer from './AddCustomer';
 import EditCustomer from './EditCustomer'
+import AddTraining from './AddTraining';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
@@ -96,9 +97,8 @@ function Customerlist() {
             width: 50,
             field: '_links.href',
             cellRendererFramework: params => (
-                <AddCircleIcon color="success" />
+                <AddTraining addTraining={AddTraining} customer={params.data} />
             )
-
         },
         { field: 'firstname', sortable: true, filter: true, width: 150 },
         { field: 'lastname', sortable: true, filter: true, width: 150 },

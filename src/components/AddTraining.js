@@ -5,6 +5,9 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+import Stack from '@mui/material/Stack';
+
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 
 function AddTraining(props) {
@@ -13,7 +16,7 @@ function AddTraining(props) {
         date: '',
         duration: '',
         activity: '',
-        customer: props.customer.links[0].href
+        customer: ''
     });
 
     const handleClickOpen = () => {
@@ -25,7 +28,7 @@ function AddTraining(props) {
     };
 
     const handleSave = () => {
-        props.addTraining(training);
+        props.addTraining(props.row.data.customer, training);
         handleClose();
     }
 
@@ -35,11 +38,9 @@ function AddTraining(props) {
 
     return (
         <div>
-            <Button size="small" onClick={handleClickOpen}>
-                New training
-            </Button>
+            <Stack direction="row" spacing={1}><AddCircleIcon color="success" onClick={handleClickOpen} /></Stack>
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>Add Training for {props.customer.firstname}</DialogTitle>
+                <DialogTitle>Add Training</DialogTitle>
                 <DialogContent>
                     <TextField
                         margin="dense"
@@ -79,3 +80,5 @@ function AddTraining(props) {
         </div>
     );
 }
+
+export default AddTraining;

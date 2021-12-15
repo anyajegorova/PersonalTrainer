@@ -38,7 +38,7 @@ function EditCustomer(props) {
         setOpen(false);
     };
     const handleSave = () => {
-        props.editCustomer(customer, props.row.value);
+        props.editCustomer(props.row.value, customer);
         handleClose();
     }
 
